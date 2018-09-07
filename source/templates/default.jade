@@ -1,0 +1,43 @@
+doctype html
+html
+  head
+    link(rel='stylesheet', href='/css/index.css')
+    title World Wide Web
+  body
+    .header
+      h1.page-title World Wide Web
+
+    ul.nav
+      li: a(href='/') Home
+      li: a(href='#news') News
+      li: a(href='#about') About
+      li: a(href='#contact') Contact
+
+    .main-content
+      script.
+        var something = function() {
+          console.log('something')
+          navigator.bluetooth.requestDevice({ filters: [{ services: ['12341000-1234-1234-1234-123456789abc'] }] })
+          .then(device => device.gatt.connect())
+          .then(server => {
+            // Getting Battery Service...
+            return server.getPrimaryService('12341000-1234-1234-1234-123456789abc');
+          })
+          .then(service => {
+            // Getting Battery Level Characteristic...
+            return service.getCharacteristic('2A6E');
+          })
+          .then(characteristic => {
+            // Reading Battery Level...
+            return characteristic.readValue();
+          })
+          .then(value => {
+            console.log('Battery percentage is ' + value.getUint8(0));
+          })
+          .catch(error => { console.log(error); });
+        }
+      button(onclick='something()') Connect
+      block content
+
+    .footer
+      p Copyright © 2020 Futurecorpz. Futurecorpz ® is a Registered Trademark of Futures (un)Ltd. in the Mars Community and other solar systems.
