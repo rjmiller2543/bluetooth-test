@@ -5,13 +5,7 @@ html
     title World Wide Web
   body
     .header
-      h1.page-title World Wide Web
-
-    ul.nav
-      li: a(href='/') Home
-      li: a(href='#news') News
-      li: a(href='#about') About
-      li: a(href='#contact') Contact
+      h1.page-title CO2 Meter RAD102-7
 
     .main-content
       script.
@@ -33,6 +27,7 @@ html
           })
           .then(value => {
             console.log('Battery percentage is ' + value.getUint8(0));
+            document.getElementById("content").innerHTML = value.getUint16(0);
           })
           .catch(error => { console.log(error); });
         }
@@ -40,4 +35,4 @@ html
       block content
 
     .footer
-      p Copyright © 2020 Futurecorpz. Futurecorpz ® is a Registered Trademark of Futures (un)Ltd. in the Mars Community and other solar systems.
+      p CO2 Bluetooth Value
