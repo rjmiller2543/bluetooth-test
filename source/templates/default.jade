@@ -27,12 +27,17 @@ html
           })
           .then(value => {
             console.log('Battery percentage is ' + value.getUint8(0));
-            document.getElementById("content").innerHTML = value.getUint16(0);
+            document.getElementById("content").innerHTML = "CO2 Value: " + value.getUint16(0);
           })
-          .catch(error => { console.log(error); });
+          .catch(error => {
+            console.log(error);
+            alert(error);
+          });
         }
       button(onclick='something()') Connect
-      block content(id="content")
+      block
+        #content!= results
+        input(type="button",value="Update",onclick="update()")
 
     .footer
       p CO2 Bluetooth Value
