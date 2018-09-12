@@ -8,7 +8,7 @@ app.use(express.static(__dirname + '/static'))
 
 app.get('/', function (req, res, next) {
   try {
-    var html = template({ title: 'Home' })
+    var html = template({ title: 'Press the Connect Button and Select the Nearest Sensor to Pair and Get CO2 Value' })
     res.send(html)
   } catch (e) {
     next(e)
