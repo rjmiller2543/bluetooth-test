@@ -11,7 +11,7 @@ html
       script.
         function update() {
           console.log('something')
-          navigator.bluetooth.requestDevice({ filters: [{ services: ['12341000-1234-1234-1234-123456789abc'] }] })
+          navigator.bluetooth.requestDevice({ filters: [{ services: ['12341000-1234-1234-1234-123456789abc', '1234-1234-1234-1234', '2A6E', '2904'] }] })
           .then(device => device.gatt.connect())
           .then(server => {
             // Getting Battery Service...
