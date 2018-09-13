@@ -11,15 +11,16 @@ html
       script.
         function update() {
           console.log('something')
-          navigator.bluetooth.requestDevice({ filters: [{ services: ['12341000-1234-1234-1234-123456789abc'] }] })
+          navigator.bluetooth.requestDevice({ filters: [{ services: ['12341000-1234-1234-1234-123456789abc', 0xa5a5] }] })
           .then(device => device.gatt.connect())
           .then(server => {
             // Getting Battery Service...
-            return server.getPrimaryService('12341000-1234-1234-1234-123456789abc');
+            //return server.getPrimaryService('12341000-1234-1234-1234-123456789abc');
+            return server.getPrimaryService(0xa5a5);
           })
           .then(service => {
             // Getting Battery Level Characteristic...
-            return service.getCharacteristic(0x2a6e);
+            return service.getCharacteristic(0x2b6e);
           })
           .then(characteristic => {
             // Reading Battery Level...
